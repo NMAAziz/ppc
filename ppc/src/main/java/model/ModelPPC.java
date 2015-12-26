@@ -31,5 +31,20 @@ public class ModelPPC {
      public static ArrayList<String> getLcouts() {
         return Lcouts;
     }
-            
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getCout() {
+        return cout;
+    }
+
+    public void setCout(String cout) {
+        this.cout = cout;
+    }         
 }
