@@ -10,5 +10,5 @@ package view;
  * @author Abdel Aziz NGOUH
  */
 public class ViewPPC {
-    
+        
 }

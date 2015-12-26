@@ -10,5 +10,5 @@ package model;
  * @author Abdel Aziz NGOUH
  */
 public class ModelPPC {
-    
+        
 }
