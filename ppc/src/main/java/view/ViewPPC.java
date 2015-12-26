@@ -7,6 +7,7 @@ package view;
 
 import java.io.File;
 import java.net.URL;
+import javafx.application.Application;
 import static javafx.application.Application.launch;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
@@ -22,7 +23,7 @@ import javafx.stage.WindowEvent;
  *
  * @author Abdel Aziz NGOUH
  */
-public class ViewPPC {
+public class ViewPPC extends Application{
     
     /**
      * le stage qui permettra l'affichage de notre fenêtre javaFx
@@ -71,7 +72,7 @@ public class ViewPPC {
     {
         try {
             FXMLLoader loader = new FXMLLoader();
-            File f = new File("src/view/game.fxml");
+            File f = new File("src/main/java/view/game.fxml");
             loader.setLocation(new URL("file:/"+f.getAbsolutePath()));
             
             //loader.setController(controlleur);

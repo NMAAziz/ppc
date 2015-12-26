@@ -52,6 +52,7 @@ public class GameController implements Initializable {
     private Label labelfinal;
     private Stage stage;
     private String playerName;
+    private boolean bon = false;
     
     /**
      * Initializes the controller class.
@@ -60,7 +61,6 @@ public class GameController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
         
-        playerName();
         
         ObservableList coup = FXCollections.observableArrayList();
         coup.add("Pierre");
@@ -74,9 +74,44 @@ public class GameController implements Initializable {
     /*
      * cette méthode permet de recuperer le nom du joueur 
      */
+    @FXML
     private void playerName()
     {
-                TextInputDialog dialog = new TextInputDialog("Type Your name");
+        if(!bon)
+        {
+            bon = true;
+            playername();
+        }
+    }
+    
+    /**
+     * le control final
+     */
+    @FXML
+    private void change()
+    {
+        ModelPPC joueur1 = new ModelPPC(playerName,(""+coups.getValue()).toLowerCase());
+        humain.setText((""+coups.getValue()).toLowerCase());
+          Random rand = new Random();
+          String ordiplay = ModelPPC.getLcouts().get(rand.nextInt(ModelPPC.getLcouts().size()));
+        ModelPPC joueur2 = new ModelPPC("Ordinateur",ordiplay);
+        ordi.setText(ordiplay);
+        ControlerPPC control = new ControlerPPC();
+        String result = control.control(joueur1,joueur2);
+        
+        if(result.equals("null"))
+        {
+            labelfinal.setText("Match Nul");
+        }
+        else
+        {
+            labelfinal.setText(result+" a gagné");
+        }
+        labelfinal.setVisible(true);
+    }
+
+    private void playername() {
+     TextInputDialog dialog = new TextInputDialog("Type Your name");
                 dialog.initOwner(ViewPPC.getPrimaryStage());
                 // Get the Stage.
                 stage = (Stage) dialog.getDialogPane().getScene().getWindow();
@@ -95,29 +130,5 @@ public class GameController implements Initializable {
                 
                 // The Java 8 way to get the response value (with lambda expression).
                 result.ifPresent(name -> playerName = name);
-                System.out.println("Player Name "+playerName);
-    }
-    
-    /**
-     * le control final
-     */
-    @FXML
-    private void change()
-    {
-        ModelPPC joueur1 = new ModelPPC(playerName,""+coups.getValue());
-          Random rand = new Random();
-        ModelPPC joueur2 = new ModelPPC("Ordinateur",ModelPPC.getLcouts().get(rand.nextInt(ModelPPC.getLcouts().size())));
-        ControlerPPC control = new ControlerPPC();
-        String result = control.control(joueur1,joueur2);
-        
-        if(result.equals("null"))
-        {
-            labelfinal.setText("Match Nul");
-        }
-        else
-        {
-            labelfinal.setText(result+" a gagné");
-        }
-        labelfinal.setVisible(true);
-    }
+                System.out.println("Player Name "+playerName);}
 }
