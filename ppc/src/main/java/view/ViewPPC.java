@@ -7,6 +7,7 @@ package view;
 
 import java.io.File;
 import java.net.URL;
+import static javafx.application.Application.launch;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.control.SplitPane;
@@ -91,5 +92,10 @@ public class ViewPPC {
         }
     }
    
-        
+        /**
+     * @param args the command line arguments
+     */
+    public static void main(String[] args) {
+        launch(args);
+    }
 }
