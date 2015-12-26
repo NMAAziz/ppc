@@ -45,6 +45,6 @@ public class ModelPPC {
     }
 
     public void setCout(String cout) {
-        this.cout = cout;
+        this.cout = cout;        
     }         
 }
