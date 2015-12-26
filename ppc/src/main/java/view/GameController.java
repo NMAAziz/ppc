@@ -5,9 +5,11 @@
  */
 package view;
 
+import controler.ControlerPPC;
 import java.io.File;
 import java.net.URL;
 import java.util.Optional;
+import java.util.Random;
 import java.util.ResourceBundle;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -102,6 +104,20 @@ public class GameController implements Initializable {
     @FXML
     private void change()
     {
-        ModelPPC joueur1 = new ModelPPC();
+        ModelPPC joueur1 = new ModelPPC(playerName,""+coups.getValue());
+          Random rand = new Random();
+        ModelPPC joueur2 = new ModelPPC("Ordinateur",ModelPPC.getLcouts().get(rand.nextInt(ModelPPC.getLcouts().size())));
+        ControlerPPC control = new ControlerPPC();
+        String result = control.control(joueur1,joueur2);
+        
+        if(result.equals("null"))
+        {
+            labelfinal.setText("Match Nul");
+        }
+        else
+        {
+            labelfinal.setText(result+" a gagné");
+        }
+        labelfinal.setVisible(true);
     }
 }
